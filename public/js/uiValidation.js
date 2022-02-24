@@ -19,8 +19,8 @@ function checkNewPassword(input) {
     const confirmPasswordValue = confirmPasswordInput.value;
 
     if (!confirmPasswordValue) {
-      confirmPasswordInput.setCustomValidity('8～60文字のパスワードを入力してください');
-      confirmPasswordInvalidFeedbackDiv.innerHTML = '8～60文字のパスワードを入力してください.';
+      confirmPasswordInput.setCustomValidity('使用可能な文字からなる8～60桁のパスワードを入力してください');
+      confirmPasswordInvalidFeedbackDiv.innerHTML = '使用可能な文字からなる8～60桁のパスワードを入力してください';
       return;
     }
 
@@ -29,7 +29,7 @@ function checkNewPassword(input) {
       confirmPasswordInvalidFeedbackDiv.innerHTML = '新しいパスワードが一致していません';
     } else {
       confirmPasswordInput.setCustomValidity('');
-      confirmPasswordInvalidFeedbackDiv.innerHTML = '8～60文字のパスワードを入力してください.';
+      confirmPasswordInvalidFeedbackDiv.innerHTML = '使用可能な文字からなる8～60桁のパスワードを入力してください';
     }
 }
 

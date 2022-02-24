@@ -3,7 +3,7 @@
  */
 module.exports = {
     appFQDN: "changePasswordWebApp",
-    passwordPolicyRegexp : null,
+    passwordPolicyRegexp : new RegExp("^[\x20-\x7e]*$"),
     passwordMinLen : 8,
     passwordMaxLen : 60,
     scopes : ["https://graph.microsoft.com/.default"],

@@ -73,7 +73,14 @@ module.exports = {
         const usernamePasswordRequest = {
             scopes: scopes,
             username: accountid,
-            password: oldpass
+            password: encodeURIComponent(oldpass)
+            /**
+             * [TODO]: password のエンコードについて(workaround)
+             * 
+             * @azure/msal-node の PublicClientApplication.acquireTokenByUsernamePassword でリクエストボディを作成するビルダー：
+             * @azure/msal-common の src/request/RequestParameterBuilder.ts#addPassword や createQueryString 周りで
+             * encodeURIComponent の修正が入った場合は、自力でのエンコードを見直してください。
+             */
         };
     
         const token = await retry(
