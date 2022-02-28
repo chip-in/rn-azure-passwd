@@ -22,7 +22,11 @@ const CUSTOM_IDEMPOTENT_HTTP_METHODS = CUSTOM_SAFE_HTTP_METHODS.concat(['post'/*
 const urlAuthority = process.env.CLOUD_INSTANCE_ID || defaultValue.urlAuthority;
 const scopes = process.env.SCOPES && passwdUtil.getScopes(process.env.SCOPES, "SCOPES") || defaultValue.scopes;
 const accountLockedErrCd = process.env.accountLockedErrCd || defaultValue.accountLockedErrCd;
-const retryCount = process.env.retryCount && passwdUtil.getNumber(process.env.retryCount, "retryCount") || defaultValue.retryCount;
+let retryCount = defaultValue.retryCount;
+if (process.env.retryCount) {
+    const result =  passwdUtil.getNumber(process.env.retryCount, "retryCount");
+    if (result != null) retryCount = result;
+}
 const backOffMultiplier = process.env.backOffMultiplier && passwdUtil.getNumberDecimal(process.env.backOffMultiplier, "backOffMultiplier") || defaultValue.backOffMultiplier;
 const backOffInitialInterval = process.env.backOffInitialInterval && passwdUtil.getNumber(process.env.backOffInitialInterval, "backOffInitialInterval") || defaultValue.backOffInitialInterval;
 const backOffMaxInterval = process.env.backOffMaxInterval && passwdUtil.getNumber(process.env.backOffMaxInterval, "backOffMaxInterval") || defaultValue.backOffMaxInterval;

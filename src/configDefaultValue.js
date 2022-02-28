@@ -7,7 +7,7 @@ module.exports = {
     passwordMinLen : 8,
     passwordMaxLen : 60,
     scopes : ["https://graph.microsoft.com/.default"],
-    retryCount : 3,
+    retryCount : 0,
     backOffMultiplier : 2.0,
     backOffInitialInterval : 300,
     backOffMaxInterval : 30000,
